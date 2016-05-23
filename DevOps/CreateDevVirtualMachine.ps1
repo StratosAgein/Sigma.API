@@ -1,5 +1,5 @@
 # Settings
-$subscription = Import-AzurePublishSettingsFile "C:\SA Git\Sigma.API\DevOps\PublishFiles\publish.publishsettings"
+$subscription = Import-AzurePublishSettingsFile "PublishFiles\publish.publishsettings"
 $storageAccount = "StratosStorage"
 $VMFamily = "Ubuntu Server 14.04 LTS"
 $VMName = "<machine name>"
