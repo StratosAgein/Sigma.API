@@ -50,6 +50,10 @@ function installMongo{
     
     sudo apt-get install -y mongodb-org
     
+    sudo mkdir /var/lib/mongodb
+    
+    sudo mkdir /var/log/mongodb
+    
     sudo service mongod start
 }
 
@@ -63,6 +67,8 @@ function cloneProject{
 }
 
 echo "\n Welcome to Sigma DevOps"
+
+echo "\n Initializing server script"
 
 installGit
 
