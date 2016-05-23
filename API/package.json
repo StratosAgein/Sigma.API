@@ -1,7 +1,7 @@
 {
-  "author"      : "YOU <YOU@example.com>",
-  "name"        : "my_actionhero_project",
-  "description" : "my actionhero project",
+  "author"      : "Camilo Rodríguez <camiepisode@outlook.com>",
+  "name"        : "sigma_platform",
+  "description" : "Sigma platform for Balance ScoreCard",
   "version"     : "0.0.1",
   "engines"     : {
     "node": ">=0.10.0"

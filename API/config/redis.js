@@ -2,7 +2,7 @@ exports['default'] = {
   redis: function(api){
     var redisDetails = {
       // Which channel to use on redis pub/sub for RPC communication
-      channel: 'actionhero',
+      channel: 'sigma',
       // How long to wait for an RPC call before considering it a failure
       rpcTimeout: 5000,
       // which redis package should you ise?

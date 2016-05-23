@@ -1,5 +1,5 @@
 {
-	"*** starting actionhero ***": "*** starting actionhero ***",
+	"*** starting actionhero ***": "*** Starting sigma API Platform ***",
 	"Logger loaded.  Possible levels include:": "Logger loaded.  Possible levels include:",
 	"Loaded initializer: %s": "Loaded initializer: %s",
 	"Loading initializer: %s": "Loading initializer: %s",
@@ -34,5 +34,6 @@
 	"[ file @ %s ]": "[ file @ %s ]",
 	"[ action @ %s ]": "[ action @ %s ]",
 	"file is a required param to send a file": "file is a required param to send a file",
-	"That file is not found (%s)": "That file is not found (%s)"
+	"That file is not found (%s)": "That file is not found (%s)",
+	"*** rebooting due to config change (%s) ***": "*** rebooting due to config change (%s) ***"
 }

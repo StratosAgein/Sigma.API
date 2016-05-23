@@ -5,7 +5,7 @@ var actionheroPrototype = require('actionhero').actionheroPrototype;
 var actionhero = new actionheroPrototype();
 var api;
 
-describe('actionhero Tests', function(){
+describe('Sigma Tests', function(){
 
   before(function(done){
     actionhero.start(function(error, a){
