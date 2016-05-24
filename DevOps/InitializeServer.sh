@@ -73,8 +73,8 @@ echo "\n Initializing server script"
 installGit
 
 if["$ISMONGOSERVER" = true]; then
+    installMongo
+else
     installNode
     cloneProject false
-else
-    installMongo
 fi
