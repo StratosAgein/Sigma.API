@@ -20,18 +20,20 @@ $LinuxUser = "thEpisode"
 $LinuxPass = "Cami%3_2012"
 
 # Selecting azure subscription
-echo "Selecting Azure subscription..."
+echo " Selecting Azure subscription..."
 Select-AzureSubscription -SubscriptionName $subscription[0].Name -Current
 # Selecting storageAccount
-echo "Setting up Azure subscription..."
+echo " Setting up Azure subscription..."
 Set-AzureSubscription -SubscriptionName $subscription[0].Name -CurrentStorageAccountName $storageAccount
 
 # Selecting Ubuntu Image
-echo "Selecting Ubuntu Image..."
+echo " Selecting Ubuntu Image..."
 $UbuntuImage = Get-AzureVMImage | where { $_.ImageFamily -eq $VMFamily } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
-echo "Creating virtual machine configuration..."
-$VirtualMachine = New-AzureVMConfig -Name $VMName -InstanceSize $VMSize -ImageName $UbuntuImage ` | Add-AzureProvisioningConfig -Linux -LinuxUser $LinuxUser -Password $LinuxPass | Add-AzureDataDisk -CreateNew -DiskSizeInGB $DiskSize -DiskLabel $DiskLabel -LUN $LogicalUnitNumber -HostCaching $hcaching
+echo " Creating virtual machine configuration..."
+$VirtualMachine = New-AzureVMConfig -Name $VMName -InstanceSize $VMSize -ImageName $UbuntuImage ` | Add-AzureProvisioningConfig -Linux -LinuxUser $LinuxUser -Password $LinuxPass | Add-AzureDataDisk -CreateNew -DiskSizeInGB $DiskSize -DiskLabel $DiskLabel -LUN $LogicalUnitNumber -HostCaching $hcaching 
 
-echo "Creating Virtual Machine on Microsoft Azure"
+Set-AzureEndpoint -VM $VirtualMachine -Name "SSH" -Protocol "tcp" -PublicPort 22 -LocalPort 22
+
+echo " Creating Virtual Machine on Microsoft Azure"
 New-AzureVM -ServiceName $CloudServiceName -VMs $VirtualMachine
