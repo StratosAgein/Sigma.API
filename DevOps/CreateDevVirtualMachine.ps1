@@ -1,3 +1,5 @@
+#Get-AzurePublishSettingsFile
+
 echo "`n`t`t`t`t`tWelcome to Sigma DevOps Platform`n`n"
 # If exist Azure Accounts registered on Powershell
 echo " Deleting existing Azure Accounts..."
@@ -30,10 +32,13 @@ Set-AzureSubscription -SubscriptionName $subscription[0].Name -CurrentStorageAcc
 echo " Selecting Ubuntu Image..."
 $UbuntuImage = Get-AzureVMImage | where { $_.ImageFamily -eq $VMFamily } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
+# Creating virtual machine settings
 echo " Creating virtual machine configuration..."
 $VirtualMachine = New-AzureVMConfig -Name $VMName -InstanceSize $VMSize -ImageName $UbuntuImage ` | Add-AzureProvisioningConfig -Linux -LinuxUser $LinuxUser -Password $LinuxPass | Add-AzureDataDisk -CreateNew -DiskSizeInGB $DiskSize -DiskLabel $DiskLabel -LUN $LogicalUnitNumber -HostCaching $hcaching 
 
+# Setting up SSH port
 Set-AzureEndpoint -VM $VirtualMachine -Name "SSH" -Protocol "tcp" -PublicPort 22 -LocalPort 22
 
-echo " Creating Virtual Machine on Microsoft Azure"
-New-AzureVM -ServiceName $CloudServiceName -VMs $VirtualMachine
+# Creating virtual machine
+echo " Creating Virtual Machine on Microsoft Azure..."
+New-AzureVM -ServiceName $CloudServiceName -VMs $VirtualMachine -WarningAction SilentlyContinue
