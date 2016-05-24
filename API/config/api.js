@@ -7,7 +7,7 @@ exports['default'] = {
       //  Be sure that every server you run has a unique ID (which will happen when generated dynamically)
       //  id: 'myActionHeroServer',
       // A unique token to your application that servers will use to authenticate to each other
-      serverToken: 'FigmaPlatform',
+      serverToken: 'SigmaPlatform',
       // The welcome message seen by TCP and webSocket clients upon connection
       welcomeMessage: 'Welcome to Sigma Platform API',
       // the redis prefix for actionhero's cache objects

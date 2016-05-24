@@ -20,6 +20,6 @@ $UbuntuImage = Get-AzureVMImage | where { $_.ImageFamily -eq $VMFamily } | sort 
 
 $VirtualMachine = New-AzureVMConfig -Name $VMName -InstanceSize $VMSize -ImageName $UbuntuImage
 $VirtualMachine | Add-AzureDataDisk -CreateNew -DiskSizeInGB $DiskSize -DiskLabel $DiskLabel -LUN $LogicalUnitNumber -HostCaching $hcaching
-$VirtualMachine | Add-AzureProvisioningConfig -Windows -AdminUsername "thEpisode" -Password "Cami%3_2012"-NoRDPEndpoint -NoWinRMEndpoint
+$VirtualMachine | Add-AzureProvisioningConfig -Linux -LinuxUser "thEpisode" -Password "Cami%3_2012"-NoRDPEndpoint -NoWinRMEndpoint
 
 New-AzureVM -ServiceName CloudServiceName -VMs $VirtualMachine
