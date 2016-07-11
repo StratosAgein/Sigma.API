@@ -8,7 +8,8 @@
   },
   "dependencies" : {
     "actionhero" : "13.4.0",
-    "ws"         : "latest"
+    "ws"         : "latest",
+    "mongoose"   : "~4.5.3"
   },
   "devDependencies" : {
     "mocha"  : "latest",

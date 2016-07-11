@@ -35,5 +35,9 @@
 	"[ action @ %s ]": "[ action @ %s ]",
 	"file is a required param to send a file": "file is a required param to send a file",
 	"That file is not found (%s)": "That file is not found (%s)",
-	"*** rebooting due to config change (%s) ***": "*** rebooting due to config change (%s) ***"
+	"*** rebooting due to config change (%s) ***": "*** rebooting due to config change (%s) ***",
+	"[server: %s] %s": "[server: %s] %s",
+	"*** actionhero restarted ***": "*** actionhero restarted ***",
+	"*** Rebooting due to initializer change (%s) ***": "*** Rebooting due to initializer change (%s) ***",
+	"MongoDB Database connected": "MongoDB Database connected"
 }
