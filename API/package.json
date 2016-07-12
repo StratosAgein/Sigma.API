@@ -9,7 +9,8 @@
   "dependencies" : {
     "actionhero" : "13.4.0",
     "ws"         : "latest",
-    "mongoose"   : "~4.5.3"
+    "mongoose"   : "~4.5.3",
+    "twilio"     : "~2.9.1"
   },
   "devDependencies" : {
     "mocha"  : "latest",
