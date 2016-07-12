@@ -1,8 +1,8 @@
 exports.SendSMS = {
   name: 'SendSMS',
-  description: 'Send an International SMS',
+  description: 'Send international SMS',
   outputExample: {
-    result: true
+    result: "Message sent from Twilio"
   },
   inputs: {
     smsBody: { required: true }
@@ -21,10 +21,7 @@ exports.SendSMS = {
                 api.log('Message sent from Twilio', 'notice');
             }
         });
-      //("Sigma Two-Factor test")
 
-      data.response.randomNumber = Math.random();
       next();
   }
-
 };
