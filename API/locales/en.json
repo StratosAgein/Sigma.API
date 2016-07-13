@@ -43,5 +43,6 @@
 	"Twilio API connected": "Twilio API connected",
 	"Message sent from Twilio": "Message sent from Twilio",
 	"action reloaded: %s @ v%s, %s": "action reloaded: %s @ v%s, %s",
-	"%s is a required parameter for this action": "%s is a required parameter for this action"
+	"%s is a required parameter for this action": "%s is a required parameter for this action",
+	"SenGrid API initialized": "SenGrid API initialized"
 }
