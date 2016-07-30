@@ -44,8 +44,6 @@ exports.Authenticate = {
 
             next();
         })
-      }
-      
-      
+      }      
   }
 };

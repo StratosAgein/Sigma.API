@@ -13,7 +13,8 @@ exports.status = {
       'currentTime':1420953679624
     }
   },
-
+  authenticated: false,
+  version: 1.0,
   run: function(api, data, next){
     data.response.id                = api.id;
     data.response.actionheroVersion = api.actionheroVersion;

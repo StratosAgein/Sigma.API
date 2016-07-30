@@ -29,6 +29,8 @@ exports.GetAllUsers = {
   inputs: {
     
   },
+  authenticated: true,
+  version: 1.0,
   run: function(api, data, next){
       
       api.MongoDB.User.find({}, function(err, users){

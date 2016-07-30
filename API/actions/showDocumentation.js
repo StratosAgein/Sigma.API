@@ -80,7 +80,8 @@ exports.showDocumentation = {
       }
     }
   },
-
+  authenticated: false,
+  version: 1.0,
   run: function(api, data, next){
     data.response.documentation = api.documentation.documentation;
     next();

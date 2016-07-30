@@ -7,6 +7,8 @@ exports.SendSMS = {
   inputs: {
     smsBody: { required: true }
   },
+  authenticated: false,
+  version: 1.0,
   run: function(api, data, next){
       
       api.Twilio.Client.messages.create({ 

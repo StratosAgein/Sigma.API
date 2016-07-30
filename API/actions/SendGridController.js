@@ -9,6 +9,8 @@ exports.SendBasicEmail = {
     subject_email: {required: true},
     content_body: {required: true}
   },
+  authenticated: false,
+  version: 1.0,
   run: function(api, data, next){      
       
       mail = new api.SendGrid.MailHelper.Mail(
@@ -47,6 +49,8 @@ exports.SendComposedEmail = {
     subject_email: {required: true},
     content_body: {required: true}
   },
+  authenticated: false,
+  version: 1.0,
   run: function(api, data, next){
     var composedEmailFile = null;
     if(api.SendGrid.CanIUseComposedEmail){
