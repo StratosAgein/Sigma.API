@@ -10,6 +10,8 @@ exports.Authenticate = {
     Email: { required: true },
     Password: {required: true}
   },
+  authenticated: false,
+  version: 1.0,
   run: function(api, data, next){
       if(data.params.Email != undefined){
         api.MongoDB.User.findOne({Email: data.params.Email}, function(err, user){
