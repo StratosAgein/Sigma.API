@@ -31,6 +31,7 @@ module.exports = {
               Password: String,
               Status: Number,
               Phone: String, 
+              TwoFactorPin: String,
               Roles: [api.MongoDB.Schema.Types.Mixed]
           },
           { 

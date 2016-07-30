@@ -38,6 +38,7 @@ exports.Authenticate = {
                     data.response.Success = true;
                     data.response.Message = 'Welcome to Sigma';
                     data.response.Token = token;
+                    data.response.UserId = user._id;
 
                 }
             }
