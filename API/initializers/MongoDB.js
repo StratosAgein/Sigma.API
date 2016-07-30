@@ -18,13 +18,26 @@ module.exports = {
     
       db.on('error', console.error.bind(console, 'connection error:'));
       db.once('open', function callback() {
-          api.log('MongoDB Database connected', 'notice');
+          api.log('MongoDB Database connected to ' + api.config.mongodb.ConnectionString, 'notice');
           
           api.MongoDB.db = mongoose.connection;
           api.MongoDB.Schema = mongoose.Schema;
           api.MongoDB.Types = mongoose.Schema.Types;
           api.DriverName = 'Mongoose';
-
+          api.MongoDB.User = mongoose.model('User', new api.MongoDB.Schema({
+              Name : String,
+              Lastname: String,
+              Email: String, 
+              Password: String,
+              Status: Number,
+              Phone: String, 
+              Roles: [api.MongoDB.Schema.Types.Mixed]
+          },
+          { 
+             collection : 'User' 
+          }
+          ));
+           
           next();
       });
 
