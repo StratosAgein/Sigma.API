@@ -38,6 +38,20 @@ module.exports = {
              collection : 'User' 
           }
           ));
+
+          api.MongoDB.Company = mongoose.model('Company', new api.MongoDB.Schema({
+            _id : ObjectId,
+            ShortName : String,
+            LongName : String,
+            OwnerClient: String,
+            CompanyStatus: Number
+          }));
+
+          api.MongoDB.CompanyStatus = {
+            Inactive : 0,
+            Active : 1,
+            Deleted : 2,
+          }
            
           next();
       });
