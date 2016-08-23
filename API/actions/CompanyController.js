@@ -4,7 +4,7 @@ exports.GetAllCompanies = {
   outputExample: {
     Companies : [
       {
-        "_id" :         ObjectId("51e0373c6f35bd826f47e9a3"),
+        "_id" :         "51e0373c6f35bd826f47e9a3",
         ShortName:      'Positiva',
         LongName:       'Positiva compañía de seguros',
         OwnerClient:    null,
@@ -32,7 +32,7 @@ exports.GetCompanyById = {
   outputExample: {
     Companies : 
       {
-        "_id" :         ObjectId("51e0373c6f35bd826f47e9a3"),
+        "_id" :         "51e0373c6f35bd826f47e9a3",
         ShortName:      'Positiva',
         LongName:       'Positiva compañía de seguros',
         OwnerClient:    null,
@@ -59,7 +59,7 @@ exports.GetCompanyByShortName = {
   outputExample: {
     Companies : 
       {
-        "_id" :         ObjectId("51e0373c6f35bd826f47e9a3"),
+        "_id" :         "51e0373c6f35bd826f47e9a3",
         ShortName:      'Positiva',
         LongName:       'Positiva compañía de seguros',
         OwnerClient:    null,
@@ -86,7 +86,7 @@ exports.GetCompanyByLongName = {
   outputExample: {
     Companies : 
       {
-        "_id" :         ObjectId("51e0373c6f35bd826f47e9a3"),
+        "_id" :         "51e0373c6f35bd826f47e9a3",
         ShortName:      'Positiva',
         LongName:       'Positiva compañía de seguros',
         OwnerClient:    null,
@@ -133,6 +133,7 @@ exports.CreateCompany = {
 
       company.save(function(err, result){
           if (err) console.log(err);
+
           data.response.result = result;
           next();
       })

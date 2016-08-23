@@ -40,7 +40,7 @@ module.exports = {
           ));
 
           api.MongoDB.Company = mongoose.model('Company', new api.MongoDB.Schema({
-            _id : ObjectId,
+            _id : mongoose.Schema.Types.ObjectId,
             ShortName : String,
             LongName : String,
             OwnerClient: String,
