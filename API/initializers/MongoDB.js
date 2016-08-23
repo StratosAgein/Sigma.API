@@ -22,7 +22,8 @@ module.exports = {
           
           api.MongoDB.db = mongoose.connection;
           api.MongoDB.Schema = mongoose.Schema;
-          api.MongoDB.Types = mongoose.Schema.Types;
+          api.MongoDB.Schema.Types = mongoose.Schema.Types;
+          api.MongoDB.ObjectId = mongoose.Types.ObjectId;
           api.DriverName = 'Mongoose';
           api.MongoDB.User = mongoose.model('User', new api.MongoDB.Schema({
               Name : String,
