@@ -45,7 +45,11 @@ module.exports = {
             LongName : String,
             OwnerClient: String,
             CompanyStatus: Number
-          }));
+          },
+          { 
+             collection : 'Company' 
+          }
+          ));
 
           api.MongoDB.CompanyStatus = {
             Inactive : 0,
