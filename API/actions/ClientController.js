@@ -101,8 +101,8 @@ exports.GetClientById = {
   }
 };
 
-exports.GetAllClient = {
-  name: 'GetClientById',
+exports.GetAllClients = {
+  name: 'GetAllClients',
   description: 'Get Client by Id',
   outputExample: {
     

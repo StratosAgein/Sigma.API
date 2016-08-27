@@ -129,8 +129,8 @@ exports.GetMetricById = {
   }
 };
 
-exports.GetAllMetric = {
-  name: 'GetMetricById',
+exports.GetAllMetrics = {
+  name: 'GetAllMetrics',
   description: 'Get Metric by Id',
   outputExample: {
     

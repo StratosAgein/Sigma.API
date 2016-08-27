@@ -90,7 +90,7 @@ exports.GetPerspectiveById = {
 };
 
 exports.GetAllPerspective = {
-  name: 'GetPerspectiveById',
+  name: 'GetAllPerspective',
   description: 'Get Perspective by Id',
   outputExample: {
     

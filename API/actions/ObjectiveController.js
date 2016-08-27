@@ -86,8 +86,8 @@ exports.GetObjectiveById = {
   }
 };
 
-exports.GetAllObjective = {
-  name: 'GetObjectiveById',
+exports.GetAllObjectives = {
+  name: 'GetAllObjectives',
   description: 'Get Objective by Id',
   outputExample: {
     
