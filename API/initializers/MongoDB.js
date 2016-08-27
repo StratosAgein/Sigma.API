@@ -128,6 +128,18 @@ module.exports = {
         }
         ));
 
+        api.MongoDB.PaymentMethod = mongoose.model('PaymentMethod', new api.MongoDB.Schema({
+            _id : mongoose.Schema.Types.ObjectId,
+            Name : String,
+            PaymentMethodStatus : Number,
+            Alias : String,
+            PaymentMethodType : Number
+        },
+        { 
+            collection : 'PaymentMethod' 
+        }
+        ));
+
 
         // Schema Enum Models definition
         api.MongoDB.CompanyStatus = {
@@ -162,6 +174,17 @@ module.exports = {
 
         api.MongoDB.UserStatus = {
 
+        };
+
+        api.MongoDB.PaymentMethodStatus = {
+
+        };
+
+        api.MongoDB.PaymentMethodType = {
+          CreditCard : 0,
+          PSE : 1,
+          DaviPlata : 2,
+          Nequi : 3
         };
           
         next();
