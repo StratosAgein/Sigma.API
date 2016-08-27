@@ -29,6 +29,7 @@ module.exports = {
 
         // Schema Entity Models definition
         api.MongoDB.User = mongoose.model('User', new api.MongoDB.Schema({
+            _id : mongoose.Schema.Types.ObjectId,
             Name : String,
             Lastname: String,
             Email: String, 
@@ -45,6 +46,7 @@ module.exports = {
 
         api.MongoDB.Company = mongoose.model('Company', new api.MongoDB.Schema({
             _id : mongoose.Schema.Types.ObjectId,
+            RegisterTime : Date,
             ShortName : String,
             LongName : String,
             OwnerClient: String,
@@ -56,7 +58,10 @@ module.exports = {
         ));
 
         api.MongoDB.BalanceScoreCard = mongoose.model('BalanceScoreCard', new api.MongoDB.Schema({
-            _id : mongoose.Schema.Types.ObjectId
+            _id : mongoose.Schema.Types.ObjectId,
+            RegisterTime : Date,
+            Name : String,
+            OrganizationalUnitId : String
         },
         { 
             collection : 'BalanceScoreCard' 
@@ -64,7 +69,14 @@ module.exports = {
         ));
 
         api.MongoDB.Client = mongoose.model('Client', new api.MongoDB.Schema({
-            _id : mongoose.Schema.Types.ObjectId
+            _id : mongoose.Schema.Types.ObjectId,
+            Email : String,
+            Address : String, 
+            ClientStatus : Number,
+            PaymentMethod : mongoose.Schema.Types.Mixed,
+            DocumentNumber : String,
+            DocumentType : Number,
+            PhoneNumber : String
         },
         { 
             collection : 'Client' 
@@ -72,7 +84,21 @@ module.exports = {
         ));
 
         api.MongoDB.Metric = mongoose.model('Metric', new api.MongoDB.Schema({
-            _id : mongoose.Schema.Types.ObjectId
+            _id : mongoose.Schema.Types.ObjectId,
+            Alias : String,
+            Code : String,
+            Description : String,
+            Formula : String,
+            MeasurementFrequency : Number,
+            MeasurementEndDate : Date,
+            MeasurementStartDate : Date,
+            Goal : String,
+            Name : String,
+            AssociatedObjectiveId : String,
+            ResponsibleConfiguration : String,
+            ResponsibleRegistration : String,
+            Trend : String,
+            UnitOfMeasurement : Number,
         },
         { 
             collection : 'Metric' 
@@ -80,7 +106,10 @@ module.exports = {
         ));
 
         api.MongoDB.Objective = mongoose.model('Objective', new api.MongoDB.Schema({
-            _id : mongoose.Schema.Types.ObjectId
+            _id : mongoose.Schema.Types.ObjectId,
+            Name : String,
+            Alias: String,
+            Description : String
         },
         { 
             collection : 'Objective' 
@@ -88,7 +117,11 @@ module.exports = {
         ));
 
         api.MongoDB.Perspective = mongoose.model('Perspective', new api.MongoDB.Schema({
-            _id : mongoose.Schema.Types.ObjectId
+            _id : mongoose.Schema.Types.ObjectId,
+            Name : String,
+            Weight : Number,
+            RegisterTime : Date,
+            PerspectiveStatus : Number
         },
         { 
             collection : 'Perspective' 

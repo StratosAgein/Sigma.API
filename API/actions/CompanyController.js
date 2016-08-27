@@ -238,10 +238,6 @@ exports.ForcedRemovalCompany = {
   version: 1.0,
   run: function(api, data, next){
      
-      var company = new api.MongoDB.Company({
-              CompanyStatus:  api.MongoDB.CompanyStatus.Deleted
-          });
-
       api.MongoDB.Company.findOneAndRemove(data.params.Id, function(err, result){
           if (err) {console.log('Error on update:\n');console.log(err)};
 

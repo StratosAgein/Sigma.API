@@ -41,14 +41,18 @@ exports.GetBalanceScoreCardById = {
     
   },
   inputs: {
-    
+     BalanceScoreCardId : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+     api.MongoDB.BalanceScoreCard.findOne({"_id" : data.params.CompanyId}, function(err, balanceScoreCard){
+          if (err) console.log(err);
+
+          data.response.BalanceScoreCard = balanceScoreCard;
+          next();
+      })
   }
 };
 
@@ -65,8 +69,12 @@ exports.GetAllBalanceScoreCard = {
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      api.MongoDB.BalanceScoreCard.find({}, function(err, bcss){
+          if (err) console.log(err);
+
+          data.response.Balances = bcss;
+          next();
+      })
   }
 };
 
@@ -77,14 +85,23 @@ exports.DeleteBalanceScoreCard = {
     
   },
   inputs: {
-    
+    Id : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var balance = new api.MongoDB.BalanceScoreCard({
+          BalanceScoreCardStatus:  api.MongoDB.BalanceScoreCardStatus.Deleted
+      });
+
+      var query = {"_id": data.params.Id}; 
+      api.MongoDB.BalanceScoreCard.findOneAndUpdate(query, balance, {new: true}, function(err, result){
+          if (err) {console.log('Error on update:\n');console.log(err)};
+
+          data.response.result = result;
+          next();
+      })
   }
 };
 
@@ -95,13 +112,17 @@ exports.ForcedRemovalBalanceScoreCard = {
     
   },
   inputs: {
-    
+    Id : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      api.MongoDB.Company.findOneAndRemove(data.params.Id, function(err, result){
+          if (err) {console.log('Error on update:\n');console.log(err)};
+
+          data.response.result = result;
+          next();
+      })
   }
 };

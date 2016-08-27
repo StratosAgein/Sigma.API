@@ -41,14 +41,19 @@ exports.GetMetricById = {
     
   },
   inputs: {
-    
+    MetricId : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      api.MongoDB.Metric.findOne({"_id" : data.params.MetricId}, function(err, metric){
+          if (err) console.log(err);
+
+          data.response.Metric = metric;
+          next();
+      })
+
   }
 };
 
@@ -77,14 +82,23 @@ exports.DeleteMetric = {
     
   },
   inputs: {
-    
+    Id : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var metric = new api.MongoDB.Metric({
+              MetricStatus:  api.MongoDB.MetricStatus.Deleted
+          });
+
+      var query = {"_id": data.params.Id}; 
+      api.MongoDB.Metric.findOneAndUpdate(query, metric, {new: true}, function(err, result){
+          if (err) {console.log('Error on update:\n');console.log(err)};
+
+          data.response.result = result;
+          next();
+      })
   }
 };
 
@@ -95,13 +109,17 @@ exports.ForcedRemovalMetric = {
     
   },
   inputs: {
-    
+    Id : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      api.MongoDB.Company.findOneAndRemove(data.params.Id, function(err, result){
+          if (err) {console.log('Error on update:\n');console.log(err)};
+
+          data.response.result = result;
+          next();
+      })
   }
 };
