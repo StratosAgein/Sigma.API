@@ -5,14 +5,30 @@ exports.CreatePerspective = {
     
   },
   inputs: {
-    
+    Name : {required: true},
+    Weight : {required: true},
+    RegisterTime : {required: true},
+    PerspectiveStatus : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var perspective = new api.MongoDB.Perspective({
+          _id : new api.MongoDB.ObjectId(),
+          Name : data.params.Name,
+          Weight : data.params.Weight,
+          RegisterTime : data.params.RegisterTime,
+          PerspectiveStatus : data.params.PerspectiveStatus
+      });
+
+      perspective.save(function(err, result){
+          if (err) console.log(err);
+
+          data.response.result = result;
+          next();
+      })
+      
   }
 };
 
@@ -23,14 +39,30 @@ exports.EditPerspective = {
     
   },
   inputs: {
-    
+    Name : {required: true},
+    Weight : {required: true},
+    RegisterTime : {required: true},
+    PerspectiveStatus : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var perspective = new api.MongoDB.Perspective({
+          _id : new api.MongoDB.ObjectId(),
+          Name : data.params.Name,
+          Weight : data.params.Weight,
+          RegisterTime : data.params.RegisterTime,
+          PerspectiveStatus : data.params.PerspectiveStatus
+      });
+
+      var query = {"_id": data.params.Id}; 
+      api.MongoDB.Perspective.findOneAndUpdate(query, perspective, {new: true}, function(err, result){
+          if (err) {console.log('Error on update:\n');console.log(err)};
+
+          data.response.result = result;
+          next();
+      })
   }
 };
 

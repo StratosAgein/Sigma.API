@@ -5,14 +5,31 @@ exports.CreatePaymentMethod = {
     
   },
   inputs: {
-    
+    Name : {required: true},
+    PaymentMethodStatus : {required: true},
+    Alias : {required: true},
+    PaymentMethodType : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var paymentMethod = new api.MongoDB.PaymentMethod({
+          _id : new api.MongoDB.ObjectId(),
+          ShortName : data.params.ShortName,
+          Name : data.params.Name,
+          PaymentMethodStatus : data.params.PaymentMethodStatus,
+          Alias : data.params.Alias,
+          PaymentMethodType : data.params.PaymentMethodType
+      });
+
+      paymentMethod.save(function(err, result){
+          if (err) console.log(err);
+
+          data.response.result = result;
+          next();
+      })
+      
   }
 };
 
@@ -23,14 +40,31 @@ exports.EditPaymentMethod = {
     
   },
   inputs: {
-    
+    Name : {required: true},
+    PaymentMethodStatus : {required: true},
+    Alias : {required: true},
+    PaymentMethodType : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var paymentMethod = new api.MongoDB.PaymentMethod({
+          _id : new api.MongoDB.ObjectId(),
+          ShortName : data.params.ShortName,
+          Name : data.params.Name,
+          PaymentMethodStatus : data.params.PaymentMethodStatus,
+          Alias : data.params.Alias,
+          PaymentMethodType : data.params.PaymentMethodType
+      });
+
+      var query = {"_id": data.params.Id}; 
+      api.MongoDB.PaymentMethod.findOneAndUpdate(query, paymentMethod, {new: true}, function(err, result){
+          if (err) {console.log('Error on update:\n');console.log(err)};
+
+          data.response.result = result;
+          next();
+      })
   }
 };
 

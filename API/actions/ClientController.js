@@ -5,14 +5,36 @@ exports.CreateClient = {
     
   },
   inputs: {
-    
+    Email : {required: true},
+    Address : {required: true}, 
+    ClientStatus : {required: true},
+    PaymentMethodId : {required: true},
+    DocumentNumber : {required: true},
+    DocumentType : {required: true},
+    PhoneNumber : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var client = new api.MongoDB.Client({
+          _id : new api.MongoDB.ObjectId(),
+          Email : data.params.Email,
+          Address : data.params.Address, 
+          ClientStatus : data.params.ClientStatus,
+          PaymentMethodId : data.params.PaymentMethodId,
+          DocumentNumber : data.params.DocumentNumber,
+          DocumentType : data.params.DocumentType,
+          PhoneNumber : data.params.PhoneNumber
+      });
+
+      client.save(function(err, result){
+          if (err) console.log(err);
+
+          data.response.result = result;
+          next();
+      })
+      
   }
 };
 
@@ -23,14 +45,36 @@ exports.EditClient = {
     
   },
   inputs: {
-    
+    Email : {required: true},
+    Address : {required: true}, 
+    ClientStatus : {required: true},
+    PaymentMethodId : {required: true},
+    DocumentNumber : {required: true},
+    DocumentType : {required: true},
+    PhoneNumber : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var client = new api.MongoDB.Client({
+          _id : new api.MongoDB.ObjectId(),
+          Email : data.params.Email,
+          Address : data.params.Address, 
+          ClientStatus : data.params.ClientStatus,
+          PaymentMethodId : data.params.PaymentMethodId,
+          DocumentNumber : data.params.DocumentNumber,
+          DocumentType : data.params.DocumentType,
+          PhoneNumber : data.params.PhoneNumber
+      });
+
+      var query = {"_id": data.params.Id}; 
+      api.MongoDB.Client.findOneAndUpdate(query, client, {new: true}, function(err, result){
+          if (err) {console.log('Error on update:\n');console.log(err)};
+
+          data.response.result = result;
+          next();
+      })
   }
 };
 

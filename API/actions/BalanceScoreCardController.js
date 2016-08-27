@@ -5,14 +5,25 @@ exports.CreateBalanceScoreCard = {
     
   },
   inputs: {
-    
+    Name : {required: true},
+    OrganizationalUnitId : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var balanceScoreCard = new api.MongoDB.BalanceScoreCard({
+          _id : new api.MongoDB.ObjectId(),
+          Name : data.params.Name,
+          OrganizationalUnitId : data.params.OrganizationalUnitId
+      });
+
+      company.save(function(err, result){
+          if (err) console.log(err);
+
+          data.response.result = result;
+          next();
+      })
   }
 };
 
@@ -23,14 +34,26 @@ exports.EditBalanceScoreCard = {
     
   },
   inputs: {
-    
+    Name : {required: true},
+    OrganizationalUnitId : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var balanceScoreCard = new api.MongoDB.BalanceScoreCard({
+          _id : new api.MongoDB.ObjectId(),
+          Name : data.params.Name,
+          OrganizationalUnitId : data.params.OrganizationalUnitId
+      });
+
+      var query = {"_id": data.params.Id}; 
+      api.MongoDB.BalanceScoreCard.findOneAndUpdate(query, balanceScoreCard, {new: true}, function(err, result){
+          if (err) {console.log('Error on update:\n');console.log(err)};
+
+          data.response.result = result;
+          next();
+      })
   }
 };
 

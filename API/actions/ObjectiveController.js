@@ -5,14 +5,29 @@ exports.CreateObjective = {
     
   },
   inputs: {
-    
+    Name : {required: true},
+    Alias: {required: true},
+    Description : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      
+      var objective = new api.MongoDB.Objecive({
+          _id : new api.MongoDB.ObjectId(),
+          Name : data.params.Name,
+          Alias: data.params.Alias,
+          Description : data.params.Description
+      });
+
+      objective.save(function(err, result){
+          if (err) console.log(err);
+
+          data.response.result = result;
+          next();
+      })
+      
   }
 };
 
@@ -23,14 +38,28 @@ exports.EditObjective = {
     
   },
   inputs: {
-    
+    Name : {required: true},
+    Alias: {required: true},
+    Description : {required: true}
   },
   authenticated: true,
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      var objective = new api.MongoDB.Objecive({
+          _id : new api.MongoDB.ObjectId(),
+          Name : data.params.Name,
+          Alias: data.params.Alias,
+          Description : data.params.Description
+      });
+
+      var query = {"_id": data.params.Id}; 
+      api.MongoDB.Objecive.findOneAndUpdate(query, objective, {new: true}, function(err, result){
+          if (err) {console.log('Error on update:\n');console.log(err)};
+
+          data.response.result = result;
+          next();
+      })
   }
 };
 
