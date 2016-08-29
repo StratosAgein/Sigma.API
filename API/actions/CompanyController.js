@@ -165,7 +165,8 @@ exports.EditCompany = {
     ShortName : {required: true},
     LongName : {required: true},
     OwnerClient: {required: false},
-    CompanyStatus: {required: true}
+    CompanyStatus: {required: true},
+    RegisterTime : {required: false}
   },
   authenticated: false,
   version: 1.0,
@@ -183,6 +184,7 @@ exports.EditCompany = {
           if (err) {console.log('Error on update:\n');console.log(err)};
 
           data.response.result = result;
+          data.response.Success = true;
           next();
       })
       
