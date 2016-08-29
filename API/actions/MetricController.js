@@ -142,8 +142,13 @@ exports.GetAllMetrics = {
   version: 1.0,
   run: function(api, data, next){
       
-      // Do something...
-      next();
+      api.MongoDB.Metric.find({}, function(err, metrics){
+          if (err) console.log(err);
+
+          data.response.Metrics = metrics;
+          next();
+      })
+
   }
 };
 

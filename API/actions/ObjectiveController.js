@@ -102,7 +102,7 @@ exports.GetAllObjectives = {
       api.MongoDB.Objective.find({}, function(err, objectives){
           if (err) console.log(err);
 
-          data.response.Objective = objectives;
+          data.response.Objectives = objectives;
           next();
       })
   }
