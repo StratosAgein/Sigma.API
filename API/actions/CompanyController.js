@@ -141,7 +141,13 @@ exports.CreateCompany = {
       });
 
       company.save(function(err, result){
-          if (err) console.log(err);
+          data.response.Success = true;
+
+          if (err) {
+            data.response.Success = false;
+            console.log('Error on create:\n');
+            console.log(err)
+          };
 
           data.response.result = result;
           next();
@@ -181,10 +187,16 @@ exports.EditCompany = {
 
       var query = {"_id": data.params.Id}; 
       api.MongoDB.Company.findOneAndUpdate(query, company, {new: true}, function(err, result){
-          if (err) {console.log('Error on update:\n');console.log(err)};
+        
+          data.response.Success = true;
+
+          if (err) {
+            data.response.Success = false;
+            console.log('Error on update:\n');
+            console.log(err)
+          };
 
           data.response.result = result;
-          data.response.Success = true;
           next();
       })
       
@@ -214,7 +226,13 @@ exports.DeleteCompany = {
 
       var query = {"_id": data.params.Id}; 
       api.MongoDB.Company.findOneAndUpdate(query, company, {new: true}, function(err, result){
-          if (err) {console.log('Error on update:\n');console.log(err)};
+          data.response.Success = true;
+
+          if (err) {
+            data.response.Success = false;
+            console.log('Error on delete:\n');
+            console.log(err)
+          };
 
           data.response.result = result;
           next();
